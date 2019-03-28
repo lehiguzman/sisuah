@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Validator;
 use App\User;
 use App\Subject;
 use App\Section;
+use Auth;
 
 class UserController extends Controller
 {
@@ -17,8 +18,15 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::orderBy('ID', 'DESC')->paginate();
-        return view('auth.index', compact('users'));
+        if(Auth::user()->tipo == '1')
+        {
+            $users = User::orderBy('ID', 'DESC')->paginate();
+        }
+        else
+        {            
+            $users = User::where('cedula', '=', Auth::user()->cedula)->get();       
+        }       
+        return view('auth.index', compact('users'));        
     }
 
     /**
