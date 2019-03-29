@@ -53,27 +53,29 @@ $(document).ready(function() {
           {             
             $('#divMaterias').hide();
           }
-        
-        //var password = $("input[name=password]").val();
-
-        //var email = $("input[name=email]").val();
-   
-
-        /*$.ajax({
-
-           type:'POST',
-
-           url:'/ajaxRequest',
-
-           data:{name:name, password:password, email:email},
-
-           success:function(data){
-
-              alert(data.success);
-
-           }
-
-        });*/
   });
-  ///////////////////////////////////////////////////////////////////////////////////////
+
+  $('#checksemi').click(function(e){        
+        var cursa = $("input[name=seminario]").prop('checked'); 
+        var sem = $("input[name=seminario]").val();   
+        
+        if(cursa)
+        {          
+          $.ajax({                    
+                    url: '/ajaxSelProfSem',
+                    type: 'POST',
+                    data:{sem:sem},
+                    dataType: 'html',
+                    success:function(data)
+                    {
+                        console.log(data);
+                        $('#divSelProfSem').replaceWith(data);
+                    }                                      
+                }); 
+        }                         
+        else
+        {           
+          $('#divSelProfSem').hide();
+        }
+  });  
 });

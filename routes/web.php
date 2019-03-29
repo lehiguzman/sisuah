@@ -31,8 +31,16 @@ Route::resource('subjects', 'SubjectController');
 //Secciones
 Route::resource('sections', 'SectionController');
 
+/////////Estudiante/////////////////////////////
+Route::resource('proposals', 'ProposalController');
+
+/////////Direccion Académica//////////////////////
+Route::resource('evaluators', 'EvaluatorController');
+
+
 //AJAX
 Route::post('/ajaxRequest', 'UserController@ajaxRequest');
+Route::post('/ajaxSelProfSem', 'ProposalController@ajaxSelProfSem');
 
 
 

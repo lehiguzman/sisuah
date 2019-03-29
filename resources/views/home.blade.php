@@ -84,7 +84,8 @@
         </a>
          <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-black py-2 collapse-inner rounded">            
-            <a class="collapse-item text-blue" href="{{ url('/users') }}"><i class="fas fa-edit"></i><b> Datos personales</b></a>            
+            <a class="collapse-item text-blue" href="{{ url('/users') }}"><i class="fas fa-edit"></i><b> Datos personales</b></a>
+            <a class="collapse-item text-blue" href="{{ url('/proposals') }}"><i class="fas fa-edit"></i><b> Propuesta de tesis</b></a>
           </div>
         </div> 
       </li>
@@ -99,11 +100,11 @@
       @if(Auth::user()->tipo == '3' or Auth::user()->tipo == '1')
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProf" aria-expanded="true" aria-controls="collapseProf">
           <i class="fas fa-fw fa-folder"></i>
           <span>Profesores</span>
         </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+        <div id="collapseProf" class="collapse" aria-labelledby="headingProf" data-parent="#accordionSidebar">
           <div class="bg-black py-2 collapse-inner rounded">            
             <a class="collapse-item text-blue" href="{{ url('/users') }}"><i class="fas fa-edit"></i><b> Datos personales</b></a>
           </div>
@@ -114,17 +115,15 @@
       @if(Auth::user()->tipo == '2' or Auth::user()->tipo == '1')
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseDir" aria-expanded="true" aria-controls="collapseDir">
           <i class="fas fa-fw fa-folder"></i>
           <span>Dirección Academica</span>
         </a>
-       <!-- <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">            
-            <a class="collapse-item" href="login.html">Login</a>
-            <a class="collapse-item" href="register.html">Register</a>
-            <a class="collapse-item" href="forgot-password.html">Forgot Password</a>            
+        <div id="collapseDir" class="collapse" aria-labelledby="headingDir" data-parent="#accordionSidebar">
+          <div class="bg-black py-2 collapse-inner rounded">            
+            <a class="collapse-item text-blue" href="{{ url('/evaluators') }}"><i class="fas fa-edit"></i><b> Asignar Evaluadores</b></a>         
           </div>
-        </div> -->
+        </div>
       </li>      
       @endif
       <!-- Nav Item - Tables -->
