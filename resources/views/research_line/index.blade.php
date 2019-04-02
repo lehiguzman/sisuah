@@ -58,8 +58,8 @@
                               </a>
                             </td>  
                             <td style="border: none;" class="text-center">
-                              {!! Form::open(['route' => ['research_lines.destroy' , $research_line->id], 'method' => 'DELETE', 'id' => 'formDelete']) !!}
-                                <button type="button" class="btn btn-danger" onclick="if(confirm('¿Desea borrar la Linea de Investigacíon?')) { document.getElementById('formDelete').submit(); }"><i class="fas fa-trash-alt"> Eliminar</i></button>
+                              {!! Form::open(['route' => ['research_lines.destroy' , $research_line->id], 'method' => 'DELETE']) !!}
+                                <button type="button" class="btn btn-danger" onclick="if(confirm('¿Desea borrar la Linea de Investigacíon?')) { this.type = 'submit'; }"><i class="fas fa-trash-alt"> Eliminar</i></button>
                               {!! Form::close() !!}
                             </td>                                                      
                           </td>

@@ -38,6 +38,28 @@
         @endif
     </div>
 </div>
+@if(Auth::user()->tipo == '1' or Auth::user()->tipo == '4')
+<div class="form-group row">
+    <div class="col-md-12 form-inline justify-content-center">
+        <select id="nivest" name="nivest" class="form-control{{ $errors->has('nivest') ? ' is-invalid' : '' }} col-sm-6">
+            <option value="0">
+                -- Seleccione Nivel de Estudio --
+            </option>
+            <option value="1"  @if($user->nivest == 1) selected="selected" @endif>
+                Bachiller
+            </option>
+            <option value="2"  @if($user->nivest == 2) selected="selected" @endif>
+                T.S.U.
+            </option>            
+        </select>
+        @if ($errors->has('nivest'))
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $errors->first('nivest') }}</strong>
+            </span>
+        @endif
+    </div>
+</div>
+@endif
 <div class="form-group row">
     <div class="col-md-12 form-inline justify-content-center">
         <select name="tipo" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }} col-sm-6">

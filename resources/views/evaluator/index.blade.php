@@ -96,8 +96,8 @@
                               </a>
                             </td>  
                             <td style="border: none;" class="text-center">
-                              {!! Form::open(['route' => ['evaluators.destroy' , $evaluator->id], 'method' => 'DELETE', 'id' => 'formDelete']) !!}
-                                <button type="button" class="btn btn-danger" onclick="if(confirm('¿Desea borrar el registro de Evaluadores?')) { document.getElementById('formDelete').submit(); }"><i class="fas fa-trash-alt"> Eliminar</i></button>
+                              {!! Form::open(['route' => ['evaluators.destroy' , $evaluator->id], 'method' => 'DELETE']) !!}
+                                <button type="button" class="btn btn-danger" onclick="if(confirm('¿Desea borrar el registro de Evaluadores?')) { this.type = 'submit'; }"><i class="fas fa-trash-alt"> Eliminar</i></button>
                               {!! Form::close() !!}
                             </td>                                                      
                           </td>

@@ -64,8 +64,8 @@
                               </a>
                             </td>  
                             <td style="border: none;" class="text-center">
-                              {!! Form::open(['route' => ['periods.destroy' , $period->id], 'method' => 'DELETE', 'id' => 'formDelete']) !!}
-                                <button type="button" class="btn btn-danger" onclick="if(confirm('¿Desea borrar el Periodo Académico?')) { document.getElementById('formDelete').submit(); }"><i class="fas fa-trash-alt"> Eliminar</i></button>
+                              {!! Form::open(['route' => ['periods.destroy' , $period->id], 'method' => 'DELETE']) !!}
+                                <button type="button" class="btn btn-danger" onclick="if(confirm('¿Desea borrar el Periodo Académico?')) { this.type = 'submit'; }"><i class="fas fa-trash-alt"> Eliminar</i></button>
                               {!! Form::close() !!}
                             </td>                                                      
                           </td>

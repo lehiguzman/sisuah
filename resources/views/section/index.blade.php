@@ -58,8 +58,8 @@
                               </a>
                             </td>  
                             <td style="border: none;" class="text-center">
-                              {!! Form::open(['route' => ['sections.destroy' , $section->id], 'method' => 'DELETE', 'id' => 'formDelete']) !!}
-                                <button type="button" class="btn btn-danger" onclick="if(confirm('¿Desea borrar la Sección?')) { document.getElementById('formDelete').submit(); }"><i class="fas fa-trash-alt"> Eliminar</i></button>
+                              {!! Form::open(['route' => ['sections.destroy' , $section->id], 'method' => 'DELETE']) !!}
+                                <button type="button" class="btn btn-danger" onclick="if(confirm('¿Desea borrar la Sección?')) { this.type = 'submit'; }"><i class="fas fa-trash-alt"> Eliminar</i></button>
                               {!! Form::close() !!}
                             </td>                                                      
                           </td>

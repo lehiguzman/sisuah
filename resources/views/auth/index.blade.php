@@ -86,10 +86,9 @@
                             </td>  
                             <td style="border: none;" class="text-center">
                               {!! Form::open(['route' => ['users.destroy' , $user->id], 'method' => 'DELETE', 'id' => 'formDelete']) !!}
-                                <button type="button" class="btn btn-danger" onclick="if(confirm('¿Desea borrar el registro?')) { document.getElementById('formDelete').submit(); }"><i class="fas fa-trash-alt"> Eliminar</i></button>
+                                <button type="button" class="btn btn-danger" onclick="if(confirm('¿Desea borrar el registro?')) { this.type = 'submit'; }"><i class="fas fa-trash-alt"> Eliminar</i></button>
                               {!! Form::close() !!}
-                            </td>                                                      
-                          </td>
+                            </td>                           
                           </tr>
                           	@endforeach   
                         </tbody>

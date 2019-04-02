@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('username')->unique();
             $table->string('email')->unique();
             $table->integer('tipo');
+            $table->integer('nivest')->nullable();
             $table->unsignedInteger('subject_id')->nullable(); 
             $table->foreign('subject_id')->references('id')->on('subjects');
             $table->unsignedInteger('section_id')->nullable(); 

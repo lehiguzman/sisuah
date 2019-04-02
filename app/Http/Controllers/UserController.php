@@ -75,6 +75,7 @@ class UserController extends Controller
                     'username' => $data['username'],            
                     'email' => $data['email'],
                     'tipo' => $data['tipo'],
+                    'nivest' => $data['nivest'],
                     'subject_id' => $data['subject_id'],
                     'section_id' => $data['section_id'],
                     'password' => bcrypt($data['password']),
@@ -122,7 +123,8 @@ class UserController extends Controller
             $user->name = $request->name;
             $user->username = $request->username;    
             $user->email = $request->email;
-            $user->tipo = $request->tipo;            
+            $user->tipo = $request->tipo;  
+            $user->nivest = $request->nivest;  
             if($request->password) 
                 { 
                     Validator::make($request->all(), [
