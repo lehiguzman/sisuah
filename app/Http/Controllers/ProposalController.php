@@ -32,9 +32,9 @@ class ProposalController extends Controller
         $periods = Period::orderBy('ID', 'DESC')->paginate();
         $users = User::orderBy('ID', 'DESC')->paginate();
         $sections = Section::orderBy('ID', 'DESC')->paginate();
-        $research_lines = Research_line::orderBy('ID', 'DESC')->paginate();
+        $researchs = Research_line::orderBy('ID', 'DESC')->paginate();
 
-        return view('proposal.create', compact('periods', 'users', 'sections', 'research_lines'));
+        return view('proposal.create', compact('periods', 'users', 'sections', 'researchs'));
     }
 
     /**

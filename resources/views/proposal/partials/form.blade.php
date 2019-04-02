@@ -28,6 +28,52 @@
 </div>
 <div class="form-group row">
     <div class="col-md-12 form-inline justify-content-center">
+        <label for="sercom">¿Culmino servicio comunitario?</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <select id="sercom" name="sercom" class="form-control{{ $errors->has('sercom') ? ' is-invalid' : '' }} col-sm-2" onchange="disabledNroHoras(this)">
+            <option value="0" disabled selected>
+                -- Seleccione --
+            </option>
+            <option value="si">
+                SI
+            </option>
+            <option value="no">
+                NO
+            </option>
+            <option value="ec">
+                EN CURSO
+            </option>            
+        </select>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" class="form-control{{ $errors->has('sercom_horas') ? ' is-invalid' : '' }} col-sm-1" name="sercom_horas" id="sercom_horas" placeholder="Nro de Horas" disabled>
+        @if ($errors->has('sercom'))
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $errors->first('sercom') }}</strong>
+            </span>
+        @endif
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-md-12 form-inline justify-content-center">        
+        <select id="research_line_id" name="research_line_id" class="form-control{{ $errors->has('research_line_id') ? ' is-invalid' : '' }} col-sm-5">
+            <option value="0" disabled selected>
+                -- Seleccione Linea de Investigación--
+            </option>
+            @foreach($researchs as $research)
+                <option value="{{ $research->id }}">
+                    {{ $research->nombre }}
+                </option> 
+            @endforeach                   
+        </select>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    
+        @if ($errors->has('research_line_id'))
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $errors->first('research_line_id') }}</strong>
+            </span>
+        @endif
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-md-12 form-inline justify-content-center">
     <input id="tiutlo" type="text" class="form-control{{ $errors->has('titulo') ? ' is-invalid' : '' }} col-sm-6" name="titulo" value="{{ old('titulo') }}" placeholder="Ingrese Titulo de la Propuesta" required autofocus>
         @if ($errors->has('titulo'))
             <span class="invalid-feedback" role="alert">
@@ -70,3 +116,23 @@
     </div>                            
 </div> 
   
+<script type="text/javascript">
+    function disabledNroHoras(e)
+    {        
+        if(e.value=="si")
+        {
+            document.getElementById('sercom_horas').disabled = false;
+            document.getElementById('sercom_horas').focus() = true;
+        }
+        if(e.value=="no")
+        {
+            document.getElementById('sercom_horas').disabled = true;
+            document.getElementById('sercom_horas').value = "";
+        }
+        if(e.value=="ec")
+        {
+            document.getElementById('sercom_horas').disabled = false;   
+            document.getElementById('sercom_horas').focus() = true;
+        }
+    }
+</script>
