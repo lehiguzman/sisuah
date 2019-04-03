@@ -77,5 +77,24 @@ $(document).ready(function() {
         {           
           $('#divSelProfSem').hide();
         }
-  });  
+  });
+
+  $('#addAsig').click(function(e)
+  {       
+        e.preventDefault();                                 
+        var contenido = $("textarea[name=contenido]").val();             
+        
+        $.ajax({                    
+                    url: '/ajaxContenido',
+                    type: 'POST',
+                    data:{contenido:contenido},
+                    dataType: 'html',
+                    success:function(data)
+                    {
+                        console.log(data);                       
+                        $('#gridAsig').replaceWith(data);
+                    }                    
+                });
+        
+  });   
 });

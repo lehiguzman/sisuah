@@ -13,6 +13,6 @@ class Proposal extends Model
      */
     protected $fillable = [
         'period_id', 'user_id', 'profsem_id', 'section_id', 
-        'nivest', 'sercom', 'sercom_horas', 'research_line_id', 'titulo', 'planteamiento', 'obj_general', 'status'
+         'sercom', 'sercom_horas', 'research_line_id', 'titulo', 'planteamiento', 'obj_general', 'status'
     ];
 }

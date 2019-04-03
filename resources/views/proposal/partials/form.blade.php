@@ -102,6 +102,48 @@
         @endif
     </div>
     <input type="hidden" name="status" value="N">
+    <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+</div>
+<div class="form-group row">
+    <div class="col-md-12 form-inline justify-content-center">                                
+            <textarea id="contenido" name="contenido" class="form-control-user form-control{{ $errors->has('contenido') ? ' is-invalid' : '' }} col-sm-5 text-center" placeholder="Ingrese Objetivo Especifico"></textarea>            
+            @if ($errors->has('contenido'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('contenido') }}</strong>
+                    </span>
+            @endif
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button type="button" class="btn btn-primary btn-user" id="addAsig">
+                Agregar
+            </button>              
+    </div>
+</div>
+<div class="form-group row">     
+    <div class="col p-4"><hr></div>
+    <div class="col-auto p-4"><b>Objetivos Especificos</b></div>
+    <div class="col p-4"><hr></div>  
+    <div id="gridAsig" class="row col-sm-12">
+        <table id="tableAsig" class="table table-bordered table-stripe ">
+            <tr>
+                <th>Objetivo Especifico</th>                
+                <th></th>
+            </tr> 
+            @foreach($specifics as $specific)                    
+                    <tr> 
+                        <input type="hidden" name="specific_id[]" value="{{ $specific->id }}">            
+                        <td>
+                            {{ $specific->contenido }}
+                        </td>                                         
+                        <td class="text-center">                                
+                            {!! Form::open(['route' => ['specifics.destroy' , $specific->id], 'method' => 'DELETE', 'id' => 'formDelete']) !!}
+                              <button type="button" class="btn btn-danger" onclick="if(confirm('¿Seguro de borrar Contenido?')) 
+                                { document.getElementById('formDelete').submit(); }"><i class="fas fa-trash-alt"></i></button>
+                            {!! Form::close() !!}                              
+                        </td>                       
+                    </tr>                 
+            @endforeach                  
+        </table>    
+    </div>
 </div>
 <div class="form-group row mb-0">
     <div class="col-md-12 form-inline justify-content-center">
@@ -109,7 +151,7 @@
             <i class="fas fa-archive"> Registrar</i>                              
         </button>        
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                         
-        <a href="{{ route('sections.index') }}" class="btn btn-danger">                
+        <a href="{{ route('proposals.index') }}" class="btn btn-danger">                
              <i class="fas fa-expand-arrows-alt"> Cancelar</i>
         </a>
         

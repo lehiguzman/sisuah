@@ -11,10 +11,10 @@
                     <div class="card-icon text-center shadow">                      
                       <i class="fas fa-id-card-alt" style='font-size:64px; color:#41B1A7;'> </i><br>
                       <h4 class="card-title">Propuesta de Tesis</h4>
-                    </div>                    
-                    <a href="{{ route('proposals.create') }}" class="btn btn-primary" style="float: center;">
-                        <i class="fas fa-plus"> Nuevo</i>
-                    </a>
+                    </div>                                          
+                        <a href="{{ route('proposals.create') }}" class="btn btn-primary" style="float: center;">
+                          <i class="fas fa-plus"> Nuevo/Editar</i>
+                        </a>                    
                     <div>
                       @if(Session::has('message'))
                         <br>
@@ -51,12 +51,7 @@
                                 <a href="{{ route('proposals.show' , $proposal->id) }}" class="btn btn-info">
                                   <i class="fas fa-eye"> Ver</i>
                                 </a>
-                            </td> 
-                            <td style="border: none;" class="text-center">
-                              <a href="{{ route('proposals.edit' , $proposal->id) }}" class="btn btn-success">
-                                <i class="fas fa-pencil-alt"> Editar</i>
-                              </a>
-                            </td>  
+                            </td>                             
                             <td style="border: none;" class="text-center">
                               {!! Form::open(['route' => ['proposals.destroy' , $proposal->id], 'method' => 'DELETE']) !!}
                                 <button type="button" class="btn btn-danger" onclick="if(confirm('¿Desea borrar la Propuesta?')) { this.type = 'submit'; }"><i class="fas fa-trash-alt"> Eliminar</i></button>

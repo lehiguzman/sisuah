@@ -8,6 +8,8 @@ use App\Period;
 use App\User;
 use App\Section;
 use App\Research_line;
+use App\Specific;
+use Auth;
 
 class ProposalController extends Controller
 {
@@ -18,7 +20,15 @@ class ProposalController extends Controller
      */
     public function index()
     {
-        $proposals = Proposal::orderBy('ID', 'DESC')->paginate();
+        //$proposals = Proposal::orderBy('ID', 'DESC')->paginate();
+        if(Auth::user()->tipo == '1')
+        {
+            $proposals = Proposal::orderBy('ID', 'DESC')->paginate();
+        }
+        else
+        {            
+            $proposals = Proposal::where('user_id', '=', Auth::user()->id)->get();       
+        }       
         return view('proposal.index', compact('proposals'));
     }
 
@@ -33,8 +43,17 @@ class ProposalController extends Controller
         $users = User::orderBy('ID', 'DESC')->paginate();
         $sections = Section::orderBy('ID', 'DESC')->paginate();
         $researchs = Research_line::orderBy('ID', 'DESC')->paginate();
-
-        return view('proposal.create', compact('periods', 'users', 'sections', 'researchs'));
+        $specifics = Specific::orderBy('ID', 'DESC')->paginate();
+        $proposal = Proposal::where('user_id', '=', Auth::user()->id)->first();
+            if ($proposal === null) 
+            {
+                return view('proposal.create', compact('periods', 'users', 'sections', 'researchs', 'specifics'));        
+            }
+            else
+            {
+                return view('proposal.edit', compact('proposal'));  
+            }
+        
     }
 
     /**
@@ -46,12 +65,32 @@ class ProposalController extends Controller
     public function store(Request $request)
     {
         $data = $request;
-                Proposal::create([
+               $user = Proposal::create([
+                    'period_id' => $data['period_id'],
+                    'user_id' => $data['user_id'],
+                    'profsem_id' => $data['profsem_id'],
+                    'section_id' => $data['section_id'],                    
+                    'sercom' => $data['sercom'],
+                    'sercom_horas' => $data['sercom_horas'],
+                    'research_line_id' => $data['research_line_id'],                    
                     'titulo' => $data['titulo'],                    
                     'planteamiento' => $data['planteamiento'],                    
                     'obj_general' => $data['obj_general'],                     
-                    'status' => $data['status'],                    
-                ]);
+                    'status' => $data['status']                  
+                ]);               
+             if($data['specific_id'])
+             {
+                for ($i=0; $i < count($data['specific_id']); $i++) 
+                {                 
+                    $specific = Specific::find($data['specific_id'][$i]);
+
+                        if($specific)
+                        {
+                            $specific->proposal_id = $user->id;
+                            $specific->save();
+                        }
+                }
+             }   
         return redirect()->route('proposals.index')->with('message', 'Propuesta creada exitosamente');
     }
 
@@ -107,7 +146,7 @@ class ProposalController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
+    {        
         Proposal::destroy($id);
         return redirect()->route('proposals.index')->with('message', 'Propuesta eliminada exitosamente');      
     }
@@ -123,5 +162,22 @@ class ProposalController extends Controller
         $users = User::orderBy('ID', 'DESC')->paginate();
         $sections = Section::orderBy('ID', 'DESC')->paginate();      
        return view('proposal.ajax.divProfSem', compact('users', 'sections')); 
+    }
+
+    /**
+     * update the specified code with request ajax.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */    
+    public function ajaxContenido(Request $request)
+    {   
+         $data = $request;
+         Specific::create([
+                    'contenido' => $data['contenido'],                    
+                ]); 
+        $specifics = Specific::orderBy('ID', 'DESC')->paginate();              
+        
+       return view('proposal.ajax.divSelContenidos', compact('specifics')); 
     }
 }

@@ -22,8 +22,7 @@ class CreateProposalsTable extends Migration
             $table->unsignedInteger('profsem_id')->nullable();
             $table->foreign('profsem_id')->references('id')->on('users');
             $table->unsignedInteger('section_id')->nullable();
-            $table->foreign('section_id')->references('id')->on('sections');
-            $table->string('nivest');
+            $table->foreign('section_id')->references('id')->on('sections');            
             $table->string('sercom');
             $table->string('sercom_horas');
             $table->unsignedInteger('research_line_id');
