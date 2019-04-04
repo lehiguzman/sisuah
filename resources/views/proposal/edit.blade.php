@@ -18,7 +18,7 @@
 
                         @include('proposal.partials.formEdit')
 
-                        {!! Form::close() !!}
+                        
 
                     </p>
                     <br>

@@ -83,11 +83,12 @@ $(document).ready(function() {
   {       
         e.preventDefault();                                 
         var contenido = $("textarea[name=contenido]").val();             
+        var proposal_id = $("input[name=proposal_id]").val();             
         
         $.ajax({                    
                     url: '/ajaxContenido',
                     type: 'POST',
-                    data:{contenido:contenido},
+                    data:{contenido:contenido, proposal_id:proposal_id},
                     dataType: 'html',
                     success:function(data)
                     {
@@ -96,5 +97,7 @@ $(document).ready(function() {
                     }                    
                 });
         
-  });   
+  });
+
+
 });

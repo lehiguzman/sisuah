@@ -10,11 +10,9 @@
                     	<h4 class="card-title ">Registro de nueva Propuesta</h4>
                 	</div> 
   					<div class="card-body">   
-    					<p class="card-text">		
-							{!! Form::open(['route' => 'proposals.store']) !!}
-
+    					<p class="card-text">							
+    						{!! Form::open(['route' => 'proposals.store', 'id' => 'formProposal']) !!}
 								@include('proposal.partials.form')
-      
 							{!! Form::close() !!}
     					</p>
     					<br>

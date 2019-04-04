@@ -51,7 +51,8 @@ class ProposalController extends Controller
             }
             else
             {
-                return view('proposal.edit', compact('proposal'));  
+                $specifics = Specific::where('proposal_id', $proposal->id)->get();
+                return view('proposal.edit', compact('proposal', 'periods', 'users', 'sections', 'researchs', 'specifics'));  
             }
         
     }
@@ -174,10 +175,11 @@ class ProposalController extends Controller
     {   
          $data = $request;
          Specific::create([
-                    'contenido' => $data['contenido'],                    
+                    'contenido' => $data['contenido'],
+                    'proposal_id' => $data['proposal_id'],                 
                 ]); 
-        $specifics = Specific::orderBy('ID', 'DESC')->paginate();              
+        $specifics = Specific::orderBy('ID', 'DESC')->paginate();   
         
-       return view('proposal.ajax.divSelContenidos', compact('specifics')); 
+        return view('proposal.ajax.divSelContenidos', compact('specifics')); 
     }
 }

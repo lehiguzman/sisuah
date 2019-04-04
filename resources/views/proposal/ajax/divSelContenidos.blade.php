@@ -12,9 +12,9 @@
                     </td>                    
                     <td class="text-center">                    
                       {!! Form::open(['route' => ['specifics.destroy' , $specific->id], 'method' => 'DELETE', 'id' => 'formDelete']) !!}
-                              <button type="button" class="btn btn-danger" onclick="if(confirm('¿Seguro de borrar Contenido?')) 
-                                { document.getElementById('formDelete').submit(); }"><i class="fas fa-trash-alt"></i></button>
-                      {!! Form::close() !!}
+                        <button type="button" class="btn btn-danger" onclick="if(confirm('¿Seguro de borrar Contenido?')) 
+                          { this.type = 'submit' }"><i class="fas fa-trash-alt"></i></button>
+                      {!! Form::close() !!}  
                     </td>                 
                 </tr>             
         @endforeach                       

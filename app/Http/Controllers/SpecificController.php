@@ -82,7 +82,7 @@ class SpecificController extends Controller
     public function destroy($id)
     {
         Specific::destroy($id);
-        $proposal = Proposal::orderBy('ID', 'DESC')->paginate();
-        return redirect()->route('proposals.create', )->with('message', 'Sección eliminada exitosamente');      
+        //$proposal = Proposal::orderBy('ID', 'DESC')->paginate();
+        return redirect()->route('proposals.create')->with('message', 'Sección eliminada exitosamente');      
     }
 }

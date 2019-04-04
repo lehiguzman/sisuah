@@ -103,7 +103,9 @@
     </div>
     <input type="hidden" name="status" value="N">
     <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+    <input type="hidden" name="proposal_id" value="">
 </div>
+
 <div class="form-group row">
     <div class="col-md-12 form-inline justify-content-center">                                
             <textarea id="contenido" name="contenido" class="form-control-user form-control{{ $errors->has('contenido') ? ' is-invalid' : '' }} col-sm-5 text-center" placeholder="Ingrese Objetivo Especifico"></textarea>            
@@ -134,11 +136,11 @@
                         <td>
                             {{ $specific->contenido }}
                         </td>                                         
-                        <td class="text-center">                                
-                            {!! Form::open(['route' => ['specifics.destroy' , $specific->id], 'method' => 'DELETE', 'id' => 'formDelete']) !!}
-                              <button type="button" class="btn btn-danger" onclick="if(confirm('¿Seguro de borrar Contenido?')) 
-                                { document.getElementById('formDelete').submit(); }"><i class="fas fa-trash-alt"></i></button>
-                            {!! Form::close() !!}                              
+                        <td class="text-center">                                                                                        
+                              {!! Form::open(['route' => ['specifics.destroy' , $specific->id], 'id' => 'formDelete']) !!}
+                              <button type="button" id="eliminaCont" class="btn btn-danger" onclick="if(confirm('¿Seguro de borrar Contenido?')) 
+                                { document.getElementById('formDelete').method = 'DELETE'; this.type = 'submit' }"><i class="fas fa-trash-alt"></i></button>
+                            {!! Form::close() !!}  
                         </td>                       
                     </tr>                 
             @endforeach                  
