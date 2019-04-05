@@ -1,7 +1,7 @@
 <div class="form-group row" id="divSelProfSem">
     <div class="col-md-12 form-inline justify-content-center">
         <select id="profsem_id" name="profsem_id" class="form-control{{ $errors->has('profsem_id') ? ' is-invalid' : '' }} col-sm-3">
-            <option value="0" disabled selected>
+            <option value="" disabled selected>
                 -- Seleccione Profesor Seminario --
             </option>
             @foreach($users as $user)
@@ -15,7 +15,7 @@
         @endif
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <select id="section_id" name="section_id" class="form-control{{ $errors->has('section_id') ? ' is-invalid' : '' }} col-sm-2">
-            <option value="0">
+            <option value="">
                 -- Sección --
             </option>
             @foreach($sections as $section)

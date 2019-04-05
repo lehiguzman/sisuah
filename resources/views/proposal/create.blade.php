@@ -11,8 +11,10 @@
                 	</div> 
   					<div class="card-body">   
     					<p class="card-text">							
-    						{!! Form::open(['route' => 'proposals.store', 'id' => 'formProposal']) !!}
+    						{!! Form::open(['route' => 'proposals.store']) !!}
+
 								@include('proposal.partials.form')
+								
 							{!! Form::close() !!}
     					</p>
     					<br>

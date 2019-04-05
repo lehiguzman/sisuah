@@ -80,11 +80,13 @@ $(document).ready(function() {
   });
 
   $('#addAsig').click(function(e)
-  {       
-        e.preventDefault();                                 
+  {                                    
         var contenido = $("textarea[name=contenido]").val();             
-        var proposal_id = $("input[name=proposal_id]").val();             
+        var proposal_id = $("input[name=proposal_id]").val();                    
         
+        var titulo = $("input[name=titulo]").val();   
+        if(titulo != "")
+        {
         $.ajax({                    
                     url: '/ajaxContenido',
                     type: 'POST',
@@ -93,11 +95,9 @@ $(document).ready(function() {
                     success:function(data)
                     {
                         console.log(data);                       
-                        $('#gridAsig').replaceWith(data);
+                        $('#gridAsig').replaceWith(data);                        
                     }                    
-                });
-        
+                });    
+        }
   });
-
-
 });

@@ -1,7 +1,7 @@
 <div class="form-group row">
     <div class="col-md-12 form-inline justify-content-center">
         <select id="period_id" name="period_id" class="form-control{{ $errors->has('period_id') ? ' is-invalid' : '' }} col-sm-6">
-            <option value="0">
+            <option value=""  disabled selected>
                 -- Seleccione Periodo Académico --
             </option>
             @foreach($periods as $period)
@@ -26,7 +26,7 @@
 <div id="divSelProfSem">
     <div class="col-md-12 form-inline justify-content-center"  @if(empty($proposal->profsem_id)) style="display: none;" @endif>
         <select id="profsem_id" name="profsem_id" class="form-control{{ $errors->has('profsem_id') ? ' is-invalid' : '' }} col-sm-3">
-            <option value="0" disabled selected>
+            <option value="" disabled selected>
                 -- Seleccione Profesor Seminario --
             </option>
             @foreach($users as $user)
@@ -40,7 +40,7 @@
         @endif
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <select id="section_id" name="section_id" class="form-control{{ $errors->has('section_id') ? ' is-invalid' : '' }} col-sm-2">
-            <option value="0">
+            <option value="">
                 -- Sección --
             </option>
             @foreach($sections as $section)
@@ -165,9 +165,9 @@
                             {{ $specific->contenido }}
                         </td>                                         
                         <td class="text-center">                                
-                            {!! Form::open(['route' => ['specifics.destroy' , $specific->id], 'method' => 'DELETE', 'id' => 'formDelete']) !!}
+                            {!! Form::open(['route' => ['specifics.destroy' , $specific->id], 'method' => 'DELETE']) !!}
                              <button type="button" class="btn btn-danger" onclick="if(confirm('¿Seguro de borrar Contenido?')) 
-                                { this.type = 'submit' }"><i class="fas fa-trash-alt"></i></button>
+                                { this.type = 'submit';  }" ><i class="fas fa-trash-alt"> </i></button>
                             {!! Form::close() !!}                              
                         </td>                       
                     </tr>                 
@@ -177,7 +177,7 @@
 </div>
 <div class="form-group row mb-0">
     <div class="col-md-12 form-inline justify-content-center">
-        <button type="submit" rel="tooltip" class="btn btn-info" value="{{ __('Registrar') }}">
+        <button type="submit" rel="tooltip" class="btn btn-info" value="{{ __('Registrar') }}" onclick="document.getElementById('formProposal').submit();">
             <i class="fas fa-archive"> Registrar</i>                              
         </button>        
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                         

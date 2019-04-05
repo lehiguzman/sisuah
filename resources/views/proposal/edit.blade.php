@@ -14,7 +14,7 @@
 
                     <p class="card-text">
             
-                        {!! Form::model($proposal, ['route' => ['proposals.update', $proposal->id] , 'method' => 'PUT']) !!}
+                        {!! Form::model($proposal, ['route' => ['proposals.update', $proposal->id] , 'method' => 'PUT', 'id' => 'formProposal']) !!}
 
                         @include('proposal.partials.formEdit')
 

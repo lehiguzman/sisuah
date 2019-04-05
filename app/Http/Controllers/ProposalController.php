@@ -51,8 +51,7 @@ class ProposalController extends Controller
             }
             else
             {
-                $specifics = Specific::where('proposal_id', $proposal->id)->get();
-                return view('proposal.edit', compact('proposal', 'periods', 'users', 'sections', 'researchs', 'specifics'));  
+               return redirect()->route('proposals.edit', $proposal->id)->with('message', 'Propuesta creada exitosamente');
             }
         
     }
@@ -66,7 +65,8 @@ class ProposalController extends Controller
     public function store(Request $request)
     {
         $data = $request;
-               $user = Proposal::create([
+
+               $proposal = Proposal::create([
                     'period_id' => $data['period_id'],
                     'user_id' => $data['user_id'],
                     'profsem_id' => $data['profsem_id'],
@@ -80,19 +80,19 @@ class ProposalController extends Controller
                     'status' => $data['status']                  
                 ]);               
              if($data['specific_id'])
-             {
+             {                
                 for ($i=0; $i < count($data['specific_id']); $i++) 
                 {                 
                     $specific = Specific::find($data['specific_id'][$i]);
 
                         if($specific)
                         {
-                            $specific->proposal_id = $user->id;
+                            $specific->proposal_id = $proposal->id;
                             $specific->save();
                         }
                 }
              }   
-        return redirect()->route('proposals.index')->with('message', 'Propuesta creada exitosamente');
+        return redirect()->route('proposals.create')->with('message', 'Propuesta creada exitosamente');
     }
 
     /**
@@ -116,7 +116,13 @@ class ProposalController extends Controller
     public function edit($id)
     {
         $proposal = Proposal::find($id);
-        return view('proposal.edit', compact('proposal'));  
+        $periods = Period::orderBy('ID', 'DESC')->paginate();
+        $users = User::orderBy('ID', 'DESC')->paginate();
+        $sections = Section::orderBy('ID', 'DESC')->paginate();
+        $researchs = Research_line::orderBy('ID', 'DESC')->paginate();
+        $specifics = Specific::where('user_id', Auth::user()->id)->get();
+
+        return view('proposal.edit', compact('proposal', 'periods', 'users', 'sections', 'researchs', 'specifics'));  
     }
 
     /**
@@ -129,14 +135,28 @@ class ProposalController extends Controller
     public function update(Request $request, $id)
     {
         $proposal = Proposal::find($id);
+
         if($proposal)
         {
+            $proposal->period_id = $request->period_id;
+            $proposal->user_id = $request->user_id;
+            $proposal->profsem_id = $request->profsem_id;
+            $proposal->section_id = $request->section_id;
+            $proposal->sercom = $request->sercom;
+            $proposal->sercom_horas = $request->sercom_horas;
+            $proposal->research_line_id = $request->research_line_id;
             $proposal->titulo = $request->titulo;
             $proposal->planteamiento = $request->planteamiento;            
             $proposal->obj_general = $request->obj_general;
             $proposal->status = $request->status;                           
-            $proposal->save();         
+            $proposal->save();               
         }
+
+        $specifics = Specific::where('user_id', $request->user_id)->get();
+            foreach ($specifics as $specific) {
+                $specific->proposal_id = $proposal->id;
+                $specific->save();
+            }            
         return redirect()->route('proposals.index')->with('message', 'Propuesta actualizada exitosamente');  
     }
 
@@ -147,7 +167,7 @@ class ProposalController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {        
+    {           
         Proposal::destroy($id);
         return redirect()->route('proposals.index')->with('message', 'Propuesta eliminada exitosamente');      
     }
@@ -174,9 +194,11 @@ class ProposalController extends Controller
     public function ajaxContenido(Request $request)
     {   
          $data = $request;
+         $user_id = Auth::user()->id;
          Specific::create([
                     'contenido' => $data['contenido'],
-                    'proposal_id' => $data['proposal_id'],                 
+                    'proposal_id' => $data['proposal_id'],
+                    'user_id' => $user_id,
                 ]); 
         $specifics = Specific::orderBy('ID', 'DESC')->paginate();   
         

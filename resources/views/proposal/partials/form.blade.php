@@ -1,7 +1,7 @@
 <div class="form-group row">
     <div class="col-md-12 form-inline justify-content-center">
         <select id="period_id" name="period_id" class="form-control{{ $errors->has('period_id') ? ' is-invalid' : '' }} col-sm-6">
-            <option value="0">
+            <option value="" disabled selected>
                 -- Seleccione Periodo Académico --
             </option>
             @foreach($periods as $period)
@@ -103,9 +103,8 @@
     </div>
     <input type="hidden" name="status" value="N">
     <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-    <input type="hidden" name="proposal_id" value="">
+    <input type="hidden" name="proposal_id" value="">    
 </div>
-
 <div class="form-group row">
     <div class="col-md-12 form-inline justify-content-center">                                
             <textarea id="contenido" name="contenido" class="form-control-user form-control{{ $errors->has('contenido') ? ' is-invalid' : '' }} col-sm-5 text-center" placeholder="Ingrese Objetivo Especifico"></textarea>            
@@ -115,7 +114,7 @@
                     </span>
             @endif
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button type="button" class="btn btn-primary btn-user" id="addAsig">
+            <button type="submit" class="btn btn-primary btn-user" id="addAsig">
                 Agregar
             </button>              
     </div>
@@ -137,9 +136,9 @@
                             {{ $specific->contenido }}
                         </td>                                         
                         <td class="text-center">                                                                                        
-                              {!! Form::open(['route' => ['specifics.destroy' , $specific->id], 'id' => 'formDelete']) !!}
-                              <button type="button" id="eliminaCont" class="btn btn-danger" onclick="if(confirm('¿Seguro de borrar Contenido?')) 
-                                { document.getElementById('formDelete').method = 'DELETE'; this.type = 'submit' }"><i class="fas fa-trash-alt"></i></button>
+                              {!! Form::open(['route' => ['specifics.destroy' , $specific->id], 'method' => 'DELETE']) !!}
+                              <button type="button" class="btn btn-danger" onclick="if(confirm('¿Seguro de borrar Contenido?')) 
+                                { this.type = 'submit' }"><i class="fas fa-trash-alt"></i></button>
                             {!! Form::close() !!}  
                         </td>                       
                     </tr>                 
@@ -149,14 +148,13 @@
 </div>
 <div class="form-group row mb-0">
     <div class="col-md-12 form-inline justify-content-center">
-        <button type="submit" rel="tooltip" class="btn btn-info" value="{{ __('Registrar') }}">
+        <button type="submit" name="botonRegistrar" rel="tooltip" class="btn btn-info" value="{{ __('Registrar') }}">
             <i class="fas fa-archive"> Registrar</i>                              
         </button>        
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                         
         <a href="{{ route('proposals.index') }}" class="btn btn-danger">                
              <i class="fas fa-expand-arrows-alt"> Cancelar</i>
-        </a>
-        
+        </a>        
     </div>                            
 </div> 
   

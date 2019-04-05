@@ -12,6 +12,6 @@ class Specific extends Model
      * @var array
      */
     protected $fillable = [
-        'proposal_id', 'contenido'
+        'proposal_id', 'contenido', 'user_id'
     ];
 }
