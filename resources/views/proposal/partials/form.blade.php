@@ -121,12 +121,12 @@
 </div>
 <div class="form-group row">     
     <div class="col p-4"><hr></div>
-    <div class="col-auto p-4"><b>Objetivos Especificos</b></div>
+    <div class="col-auto p-4 text-center"><b>Objetivos Especificos</b></div>
     <div class="col p-4"><hr></div>  
     <div id="gridAsig" class="row col-sm-12">
         <table id="tableAsig" class="table table-bordered table-stripe ">
             <tr>
-                <th>Objetivo Especifico</th>                
+                <th class="text-center">Objetivo Especifico</th>                
                 <th></th>
             </tr> 
             @foreach($specifics as $specific)                    

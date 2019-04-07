@@ -34,15 +34,18 @@ Route::resource('sections', 'SectionController');
 /////////Estudiante/////////////////////////////
 Route::resource('proposals', 'ProposalController');
 Route::resource('specifics', 'SpecificController');
+Route::resource('evaluations', 'EvaluationController');
 
 /////////Direccion Académica//////////////////////
 Route::resource('evaluators', 'EvaluatorController');
-
+Route::resource('evaluations', 'EvaluationController');
 
 //AJAX
 Route::post('/ajaxRequest', 'UserController@ajaxRequest');
 Route::post('/ajaxContenido', 'ProposalController@ajaxContenido');
 Route::post('/ajaxSelProfSem', 'ProposalController@ajaxSelProfSem');
+Route::post('/ajaxStudents', 'EvaluationController@ajaxStudents');
+Route::post('/ajaxProposal', 'EvaluationController@ajaxProposal');
 
 
 

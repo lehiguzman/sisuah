@@ -107,6 +107,7 @@
         <div id="collapseProf" class="collapse" aria-labelledby="headingProf" data-parent="#accordionSidebar">
           <div class="bg-black py-2 collapse-inner rounded">            
             <a class="collapse-item text-blue" href="{{ url('/users') }}"><i class="fas fa-edit"></i><b> Datos personales</b></a>
+            <a class="collapse-item text-blue" href="{{ url('/evaluations') }}"><i class="fas fa-edit"></i><b> Evaluaciones</b></a>
           </div>
         </div>
       </li>  
@@ -122,6 +123,7 @@
         <div id="collapseDir" class="collapse" aria-labelledby="headingDir" data-parent="#accordionSidebar">
           <div class="bg-black py-2 collapse-inner rounded">            
             <a class="collapse-item text-blue" href="{{ url('/evaluators') }}"><i class="fas fa-edit"></i><b> Asignar Evaluadores</b></a>         
+            <a class="collapse-item text-blue" href="{{ url('/evaluations') }}"><i class="fas fa-edit"></i><b> Evaluaciones</b></a>         
           </div>
         </div>
       </li>      

@@ -28,8 +28,8 @@ class CreateProposalsTable extends Migration
             $table->unsignedInteger('research_line_id')->nullable();
             $table->foreign('research_line_id')->references('id')->on('research_lines');
             $table->string('titulo')->unique()->nullable();
-            $table->string('planteamiento')->nullable();         
-            $table->string('obj_general')->nullable();         
+            $table->text('planteamiento')->nullable();         
+            $table->text('obj_general')->nullable();         
             $table->string('status');
             $table->timestamps();
         });

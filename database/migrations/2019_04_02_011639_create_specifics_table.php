@@ -19,7 +19,7 @@ class CreateSpecificsTable extends Migration
             $table->foreign('proposal_id')->references('id')->on('proposals')->onDelete('cascade');
             $table->unsignedInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->string('contenido');
+            $table->text('contenido');
             $table->timestamps();
         });
     }

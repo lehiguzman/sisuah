@@ -5,7 +5,9 @@
                 -- Seleccione Profesor Seminario --
             </option>
             @foreach($users as $user)
-                <option value="{{ $user->id }}">{{ $user->name }}</option>            
+                @if($user->tipo == '3')
+                    <option value="{{ $user->id }}">{{ $user->name }}</option>            
+                @endif
             @endforeach
         </select>
         @if ($errors->has('profsem_id'))

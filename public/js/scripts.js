@@ -94,10 +94,30 @@ $(document).ready(function() {
                     dataType: 'html',
                     success:function(data)
                     {
-                        console.log(data);                       
+                        console.log(data); 
+                        document.getElementById('contenido').value = "";
                         $('#gridAsig').replaceWith(data);                        
                     }                    
                 });    
         }
   });
+
+  $('#selPeriod').change(function(e)
+  {                                    
+        var period_id = $("select[name=period_id]").val();             
+                
+        $.ajax({                    
+                    url: '/ajaxStudents',
+                    type: 'POST',
+                    data:{period_id:period_id},
+                    dataType: 'html',
+                    success:function(data)
+                    {
+                        console.log(data);                       
+                        $('#divSelStu').replaceWith(data);                        
+                    }                    
+                });            
+  });
+
+
 });

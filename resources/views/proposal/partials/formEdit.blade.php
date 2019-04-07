@@ -155,7 +155,7 @@
     <div id="gridAsig" class="row col-sm-12">
         <table id="tableAsig" class="table table-bordered table-stripe ">
             <tr>
-                <th>Objetivo Especifico</th>                
+                <th class="text-center">Objetivo Especifico</th>                
                 <th></th>
             </tr> 
             @foreach($specifics as $specific)                    
