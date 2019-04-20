@@ -134,13 +134,13 @@
           <i class="fas fa-fw fa-table"></i>
           <span>Reportes</span>
         </a>
-        <!-- <div id="collapseReports" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+        <div id="collapseReports" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">            
-            <a class="collapse-item" href="login.html">Login</a>
-            <a class="collapse-item" href="register.html">Register</a>
-            <a class="collapse-item" href="forgot-password.html">Forgot Password</a>            
+            <a class="collapse-item" href="{{ url('/userReport') }}">Usuarios</a>
+            <a class="collapse-item" href="{{ url('/proposalReport') }}">Propuestas de Tesis</a>    
+            <a class="collapse-item" href="{{ url('/assignReport') }}">Propuestas Asignadas </a>                            
           </div>
-        </div> -->
+        </div>
       </li>      
 
       <!-- Nav Item - Charts -->
@@ -149,13 +149,11 @@
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Estadisticas</span>
         </a>
-        <!-- <div id="collapseCharts" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+        <div id="collapseCharts" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">            
-            <a class="collapse-item" href="login.html">Login</a>
-            <a class="collapse-item" href="register.html">Register</a>
-            <a class="collapse-item" href="forgot-password.html">Forgot Password</a>            
+            <a class="collapse-item" href="{{ url('/proposalXStatus') }}">Estatus de propuestas</a>            
           </div>
-        </div> -->
+        </div>
       </li>      
 
       <!-- Divider -->

@@ -24,7 +24,7 @@
                 -- Seleccione Asesor académico  --
             </option>
             @foreach($users as $user)
-                @if($user->tipo == '2')
+                @if($user->tipo == '3')
                     <option value="{{ $user->id }}">{{ $user->name }}</option>
                 @endif
             @endforeach

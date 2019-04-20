@@ -7,7 +7,7 @@
   				<div class="card-header">
   					<div class="card-icon text-center">                      
                     	<img src="{{ asset('img/icons/baseline-perm_contact_calendar-24px.svg')}}" width="50px" height="50px"> <br>
-                    	<h4 class="card-title ">Registro de Evaluación de Propouesta de Tesis</h4>
+                    	<h4 class="card-title ">Registro de Evaluación de Propuesta de Trabajo de Grado</h4>
                 	</div> 
   					<div class="card-body">   
     					<p class="card-text">		

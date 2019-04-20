@@ -10,7 +10,7 @@
 </div>
 <div class="form-group row">
     <div class="col-md-8 form-inline justify-content-center">        
-        {!! Form::selectYear('anio', 2010, date('Y'), $period->anio, ['class' => 'form-control', 'placeholder' => '--Seleccione año del Periodo--']) !!}            
+        {!! Form::selectYear('anio', 2018, date('Y'), $period->anio, ['class' => 'form-control', 'placeholder' => '--Seleccione año del Periodo--']) !!}            
         @if ($errors->has('anio'))
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $errors->first('anio') }}</strong>

@@ -8,7 +8,7 @@
                 <div class="card-header">
                     <div class="card-icon text-center">                                          
                         <i class="fa fa-edit fa-3x"></i>
-                        <h4 class="card-title">Evaluar Propuesta de Tesis</h4>
+                        <h4 class="card-title">Evaluar Propuesta de Trabajo de Grado</h4>
                     </div> 
                     <div class="card-body">
 

@@ -42,12 +42,11 @@ class ProposalController extends Controller
         $periods = Period::orderBy('ID', 'DESC')->paginate();
         $users = User::orderBy('ID', 'DESC')->paginate();
         $sections = Section::orderBy('ID', 'DESC')->paginate();
-        $researchs = Research_line::orderBy('ID', 'DESC')->paginate();
-        $specifics = Specific::orderBy('ID', 'DESC')->paginate();
+        $researchs = Research_line::orderBy('ID', 'DESC')->paginate();        
         $proposal = Proposal::where('user_id', '=', Auth::user()->id)->first();
             if ($proposal === null) 
             {
-                return view('proposal.create', compact('periods', 'users', 'sections', 'researchs', 'specifics'));        
+                return view('proposal.create', compact('periods', 'users', 'sections', 'researchs'));        
             }
             else
             {
@@ -121,7 +120,7 @@ class ProposalController extends Controller
         $sections = Section::orderBy('ID', 'DESC')->paginate();
         $researchs = Research_line::orderBy('ID', 'DESC')->paginate();
         $specifics = Specific::where('user_id', Auth::user()->id)->get();
-
+            //dd($specifics);
         return view('proposal.edit', compact('proposal', 'periods', 'users', 'sections', 'researchs', 'specifics'));  
     }
 
@@ -200,7 +199,7 @@ class ProposalController extends Controller
                     'proposal_id' => $data['proposal_id'],
                     'user_id' => $user_id,
                 ]); 
-        $specifics = Specific::orderBy('ID', 'DESC')->paginate();   
+        $specifics = Specific::where('user_id', $user_id)->get(); 
         
         return view('proposal.ajax.divSelContenidos', compact('specifics')); 
     }

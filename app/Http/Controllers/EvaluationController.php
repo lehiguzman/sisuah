@@ -52,8 +52,10 @@ class EvaluationController extends Controller
             ['period_id' =>  $data['period_id'], 
              'user_id' => $data['user_id'], 
              'resultado' => $data['resultado'], 
-             'observacion' => $data['observacion']]);
-      
+             'observacion' => $data['observacion']]);        
+
+        $this->actualizarStatus($data);
+
         return redirect()->route('evaluations.index')->with('message', 'Evaluación agregada exitosamente');
     }
 
@@ -82,14 +84,56 @@ class EvaluationController extends Controller
      */
     public function update(Request $request, $id)
     {
-         $evaluation = Evaluation::find($id);
+        $data = $request;
+        $evaluation = Evaluation::find($id);
+        
         if($evaluation)
         {            
             $evaluation->resultado = $request->resultado;
             $evaluation->observacion = $request->observacion;            
             $evaluation->save();         
         }
+
+        $this->actualizarStatus($data);
+
         return redirect()->route('evaluations.index')->with('message', 'Registro de evaluación actualizado exitosamente');
+    }
+
+    public function actualizarStatus($data)
+    {
+        $evaluadores = Evaluator::where('user_id', $data['user_id'])->get();
+
+            foreach ($evaluadores as $evaluador) {
+                $resultado_1 = Evaluation::where('prof_id', $evaluador->evaluator_1)->where('proposal_id', $data['proposal_id'])->first();
+                if($resultado_1 == null) { $res_1 = 'NULL'; } else { $res_1=$resultado_1->resultado; }
+                $resultado_2 = Evaluation::where('prof_id', $evaluador->evaluator_2)->where('proposal_id', $data['proposal_id'])->first();
+                if($resultado_2 == null) { $res_2 = 'NULL'; } else { $res_2=$resultado_2->resultado; }
+                $resultado_3 = Evaluation::where('prof_id', $evaluador->evaluator_3)->where('proposal_id', $data['proposal_id'])->first();
+                if($resultado_3 == null) { $res_3 = 'NULL'; } else { $res_3=$resultado_3->resultado; }
+                $resultado_4 = Evaluation::where('prof_id', $evaluador->evaluator_4)->where('proposal_id', $data['proposal_id'])->first();
+                if($resultado_4 == null) { $res_4 = 'NULL'; } else { $res_4=$resultado_4->resultado; }
+                
+            }            
+
+            $proposal = Proposal::find($data['proposal_id']);
+
+            if($res_1 == 1 && $res_2 == 1 && $res_3 == 1 && $res_4 == 1){                
+                $proposal->status = 'A';
+            }
+            elseif($res_1 == 3 && $res_2 == 3 && $res_3 == 3 && $res_4 == 3)
+            {                
+                $proposal->status = 'N';
+            }
+            elseif($res_1 == 2 || $res_2 == 2 || $res_3 == 2 || $res_4 == 2)
+            {
+                $proposal->status = 'M';
+            }
+            else
+            {
+                $proposal->status = 'P';
+            }
+
+            $proposal->save();
     }
 
     /**

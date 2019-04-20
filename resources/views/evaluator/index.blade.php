@@ -10,7 +10,7 @@
                   <div class="card-header card-header-icon">
                     <div class="card-icon text-center shadow">                      
                       <i class="fas fa-id-card-alt" style='font-size:64px; color:#41B1A7;'> </i><br>
-                      <h4 class="card-title">Materias</h4>
+                      <h4 class="card-title">Evaluadores</h4>
                     </div>                    
                     <a href="{{ route('evaluators.create') }}" class="btn btn-primary" style="float: center;">
                         <i class="fas fa-plus"> Nuevo</i>

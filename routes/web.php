@@ -47,6 +47,19 @@ Route::post('/ajaxSelProfSem', 'ProposalController@ajaxSelProfSem');
 Route::post('/ajaxStudents', 'EvaluationController@ajaxStudents');
 Route::post('/ajaxProposal', 'EvaluationController@ajaxProposal');
 
+//Reportes
+Route::get('/userReport', 'ReportController@usuarios');
+Route::post('/userPdf', 'ReportController@usuariosPdf');
+
+Route::get('/proposalReport', 'ReportController@proposals');
+Route::post('/proposalPdf', 'ReportController@proposalsPdf');
+
+Route::get('/assignReport', 'ReportController@assigns');
+Route::post('/assignPdf', 'ReportController@assignsPdf');
+
+//Estadistica
+Route::get('/proposalXStatus', 'ChartController@proposalXStatus');
+
 
 
 

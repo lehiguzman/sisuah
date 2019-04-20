@@ -101,11 +101,14 @@
             </span>
         @endif
     </div>
-    <input type="hidden" name="status" value="N">
+    <input type="hidden" name="status" value="R">
     <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
     <input type="hidden" name="proposal_id" value="">    
 </div>
 <div class="form-group row">
+    <div class="col p-4"><hr></div>
+    <div class="col-auto p-4 text-center"><b>Objetivos Especificos</b></div>
+    <div class="col p-4"><hr></div>
     <div class="col-md-12 form-inline justify-content-center">                                
             <textarea id="contenido" name="contenido" class="form-control-user form-control{{ $errors->has('contenido') ? ' is-invalid' : '' }} col-sm-5 text-center" placeholder="Ingrese Objetivo Especifico"></textarea>            
             @if ($errors->has('contenido'))
@@ -120,30 +123,7 @@
     </div>
 </div>
 <div class="form-group row">     
-    <div class="col p-4"><hr></div>
-    <div class="col-auto p-4 text-center"><b>Objetivos Especificos</b></div>
-    <div class="col p-4"><hr></div>  
-    <div id="gridAsig" class="row col-sm-12">
-        <table id="tableAsig" class="table table-bordered table-stripe ">
-            <tr>
-                <th class="text-center">Objetivo Especifico</th>                
-                <th></th>
-            </tr> 
-            @foreach($specifics as $specific)                    
-                    <tr> 
-                        <input type="hidden" name="specific_id[]" value="{{ $specific->id }}">            
-                        <td>
-                            {{ $specific->contenido }}
-                        </td>                                         
-                        <td class="text-center">                                                                                        
-                              {!! Form::open(['route' => ['specifics.destroy' , $specific->id], 'method' => 'DELETE']) !!}
-                              <button type="button" class="btn btn-danger" onclick="if(confirm('¿Seguro de borrar Contenido?')) 
-                                { this.type = 'submit' }"><i class="fas fa-trash-alt"></i></button>
-                            {!! Form::close() !!}  
-                        </td>                       
-                    </tr>                 
-            @endforeach                  
-        </table>    
+    <div id="gridAsig" class="row col-md-12"> 
     </div>
 </div>
 <div class="form-group row mb-0">
