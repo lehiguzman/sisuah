@@ -53,6 +53,12 @@
                                 <input id="password-confirm" type="password" class="form-control col-sm-6" name="password_confirmation" placeholder="Confirme la contraseña" required>
                          
                                 <input type="submit" value="{{ __('Registrar') }}">                                 
+
+                                <input type="hidden" name="tipo" value="1">
+                                <input type="hidden" name="avatar" value="">
+                                <input type="hidden" name="nivest" value="">
+                                <input type="hidden" name="subject_id" value="">
+                                <input type="hidden" name="section_id" value="">
                     </form>
         </div>
             

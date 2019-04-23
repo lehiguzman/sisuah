@@ -59,6 +59,8 @@ Route::post('/assignPdf', 'ReportController@assignsPdf');
 
 //Estadistica
 Route::get('/proposalXStatus', 'ChartController@proposalXStatus');
+Route::get('/proposalXMes', 'ChartController@proposalXMes');
+
 
 
 

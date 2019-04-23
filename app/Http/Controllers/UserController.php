@@ -58,6 +58,13 @@ class UserController extends Controller
         ]);
     }
 
+    public function uploadFilePost(Request $request){        
+
+        $fileName = $request['cedula'].'.'.request()->avatar->getClientOriginalExtension();
+        $request->avatar->storeAs('avatar', $fileName);
+
+        return $fileName;
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -68,6 +75,9 @@ class UserController extends Controller
     public function store(Request $request)
     {        
         $this->validator($request->all())->validate();
+
+        $file = $this->uploadFilePost($request);
+
             $data = $request;
                 User::create([
                     'cedula' => $data['cedula'],
@@ -77,6 +87,7 @@ class UserController extends Controller
                     'tipo' => $data['tipo'],
                     'nivest' => $data['nivest'],
                     'subject_id' => $data['subject_id'],
+                    'avatar' => $file,
                     'section_id' => $data['section_id'],
                     'password' => bcrypt($data['password']),
                 ]);
@@ -125,6 +136,11 @@ class UserController extends Controller
             $user->email = $request->email;
             $user->tipo = $request->tipo;  
             $user->nivest = $request->nivest;  
+            if($request->hasFile('avatar')) 
+            {
+                $file = $this->uploadFilePost($request);
+                $user->avatar = $file;
+            }  
             if($request->password) 
                 { 
                     Validator::make($request->all(), [

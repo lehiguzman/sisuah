@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->unsignedInteger('subject_id')->nullable(); 
             $table->foreign('subject_id')->references('id')->on('subjects');
             $table->unsignedInteger('section_id')->nullable(); 
+            $table->string('avatar')->nullable();
             $table->foreign('section_id')->references('id')->on('sections');
             $table->string('password');
             $table->rememberToken();

@@ -51,7 +51,7 @@ class RegisterController extends Controller
             'cedula' => 'required|numeric|unique:users',
             'name' => 'required|string|max:255',
             'username' => 'required|string|max:255|unique:users',
-            'email' => 'required|string|email|max:255|unique:users',
+            'email' => 'required|string|email|max:255|unique:users',            
             'password' => 'required|string|min:6|confirmed',
         ]);
     }
@@ -69,6 +69,8 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'username' => $data['username'],            
             'email' => $data['email'],
+            'tipo' => $data['tipo'],
+            'nivest' => $data['nivest'],
             'password' => bcrypt($data['password']),
         ]);
     }

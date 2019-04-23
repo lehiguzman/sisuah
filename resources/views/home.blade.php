@@ -24,6 +24,9 @@
   <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
   <link href="{{ asset('datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
 
+  <link rel="stylesheet" type="text/css" href="{{ asset('dist/css/dropify.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('dist/fonts/*') }}">
+
 </head>
 
 <body id="page-top">
@@ -152,6 +155,7 @@
         <div id="collapseCharts" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">            
             <a class="collapse-item" href="{{ url('/proposalXStatus') }}">Estatus de propuestas</a>            
+            <a class="collapse-item" href="{{ url('/proposalXMes') }}">Propuestas por mes</a>            
           </div>
         </div>
       </li>      
@@ -174,12 +178,16 @@
       <div id="content">
 
         <!-- Topbar -->
-        <nav class="navbar navbar-expand navbar-light bg-secondary topbar mb-4 static-top shadow">
+        <nav class="navbar navbar-expand navbar-light d-flex bg-secondary topbar mb-5 py-5 static-top shadow">
 
           <!-- Sidebar Toggle (Topbar) -->
           <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
             <i class="fa fa-bars"></i>
-          </button>          
+          </button>  
+
+          <div class="p-5 col-lg-9 text-center text-white">              
+              <h2 class="m-5">Sistema de Gestión de Propuestas de Tesis de Grado</h2>              
+          </div>        
 
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">                       
@@ -189,25 +197,11 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-white small">USUARIO</span>
-                <!-- <img class="img-profile rounded-circle" src="#"> -->
-                     <i class="fas fa-user-tag" style="font-size: 32px; color: skyblue;"></i>
+                <span class="mr-2 d-none d-lg-inline text-white small">{{ Auth::user()->name }}</span>
+                <img class="img-profile rounded-circle" src="{{ asset('storage/avatar/'.Auth::user()->avatar) }}">                     
               </a>
               <!-- Dropdown - User Information -->
-              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-               <!-- <a class="dropdown-item" href="#">
-                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Profile
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Settings
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Activity Log
-                </a> 
-                <div class="dropdown-divider"></div> -->
+              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">               
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-500" style="font-size: 18px;"> Salir</i>
                   
@@ -290,6 +284,8 @@
 
   <!-- Page level custom scripts -->
   <script src="{{ asset('js/scripts.js') }}"></script>
+
+  <script src="{{ asset('dist/js/dropify.js') }}"></script>
 </body>
 
 </html>

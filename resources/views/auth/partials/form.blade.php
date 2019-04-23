@@ -61,6 +61,13 @@
 </div>
 @endif
 <div class="form-group row">
+    <div class="col-md-12 form-inline justify-content-center">    
+        <div class="col-sm-4">
+            <input class="dropify" type="file" name="avatar" id="avatar" data-height="60">   
+        </div>
+    </div>
+</div>
+<div class="form-group row">
     <div class="col-md-12 form-inline justify-content-center">
         <select id="tipo" name="tipo" class="form-control{{ $errors->has('tipo') ? ' is-invalid' : '' }} col-sm-6">
             <option value="0">

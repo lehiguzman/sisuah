@@ -11,7 +11,7 @@
                 	</div> 
   					<div class="card-body">   
     					<p class="card-text">		
-							{!! Form::open(['route' => 'users.store']) !!}
+							{!! Form::open(['route' => 'users.store', 'enctype' => 'multipart/form-data']) !!}
 
 								@include('auth.partials.form')
       

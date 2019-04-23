@@ -60,6 +60,11 @@
     </div>
 </div>
 @endif
+<div class="form-group form-inline justify-content-center col-sm-12">    
+    <div class="col-sm-4">
+        <input class="dropify" type="file" name="avatar" id="avatar" data-height="60" data-default-file="{{ asset('storage/avatar/'.$user->avatar) }}">  
+    </div>
+</div>
 <div class="form-group row">
     <div class="col-md-12 form-inline justify-content-center">
         <select name="tipo" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }} col-sm-6">

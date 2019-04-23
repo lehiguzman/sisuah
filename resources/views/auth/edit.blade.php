@@ -14,7 +14,7 @@
 
                     <p class="card-text">
             
-                        {!! Form::model($user, ['route' => ['users.update', $user->id] , 'method' => 'PUT']) !!}
+                        {!! Form::model($user, ['route' => ['users.update', $user->id] , 'method' => 'PUT', 'enctype' => 'multipart/form-data']) !!}
 
                         @include('auth.partials.formEdit')
 
