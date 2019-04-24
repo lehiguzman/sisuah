@@ -10,6 +10,8 @@ use App\Proposal;
 use App\Specific;
 use App\User;
 use Auth;
+use App\Mail\NotaMail;
+use Mail;
 
 class EvaluationController extends Controller
 {
@@ -119,6 +121,8 @@ class EvaluationController extends Controller
 
             if($res_1 == 1 && $res_2 == 1 && $res_3 == 1 && $res_4 == 1){                
                 $proposal->status = 'A';
+                $receivers = User::find($data['user_id']);
+                Mail::to($receivers->email)->send(new NotaMail($receivers));
             }
             elseif($res_1 == 3 && $res_2 == 3 && $res_3 == 3 && $res_4 == 3)
             {                
@@ -131,9 +135,8 @@ class EvaluationController extends Controller
             else
             {
                 $proposal->status = 'P';
-            }
-
-            $proposal->save();
+            }                
+                $proposal->save();
     }
 
     /**
