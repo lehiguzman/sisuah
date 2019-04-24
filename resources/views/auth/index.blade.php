@@ -11,10 +11,12 @@
                     <div class="card-icon text-center shadow">                      
                       <i class="fas fa-id-card-alt" style='font-size:64px; color:#41B1A7;'> </i><br>
                       <h4 class="card-title">Lista de Usuarios</h4>
-                    </div>                    
+                    </div>   
+                  @if(Auth::user()->tipo == 1)                 
                     <a href="{{ route('users.create') }}" class="btn btn-primary" style="float: center;">
                         <i class="fas fa-plus"> Nuevo</i>
                     </a>
+                  @endif
                     <div>
                       @if(Session::has('message'))
                         <br>
@@ -84,11 +86,13 @@
                                 <i class="fas fa-pencil-alt"> Editar</i>
                               </a>
                             </td>  
+                          @if(Auth::user()->tipo == 1)
                             <td style="border: none;" class="text-center">
                               {!! Form::open(['route' => ['users.destroy' , $user->id], 'method' => 'DELETE', 'id' => 'formDelete']) !!}
                                 <button type="button" class="btn btn-danger" onclick="if(confirm('¿Desea borrar el registro?')) { this.type = 'submit'; }"><i class="fas fa-trash-alt"> Eliminar</i></button>
                               {!! Form::close() !!}
-                            </td>                           
+                            </td>   
+                          @endif                        
                           </tr>
                           	@endforeach   
                         </tbody>

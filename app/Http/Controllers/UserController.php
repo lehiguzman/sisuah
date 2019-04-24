@@ -84,6 +84,9 @@ class UserController extends Controller
                     'name' => $data['name'],
                     'username' => $data['username'],            
                     'email' => $data['email'],
+                    'tel_local' => $data['tel_local'],
+                    'tel_movil' => $data['tel_movil'],
+                    'direccion' => $data['direccion'],
                     'tipo' => $data['tipo'],
                     'nivest' => $data['nivest'],
                     'subject_id' => $data['subject_id'],
@@ -134,6 +137,9 @@ class UserController extends Controller
             $user->name = $request->name;
             $user->username = $request->username;    
             $user->email = $request->email;
+            $user->tel_local = $request->tel_local;
+            $user->tel_movil = $request->tel_movil;
+            $user->direccion = $request->direccion;
             $user->tipo = $request->tipo;  
             $user->nivest = $request->nivest;  
             if($request->hasFile('avatar')) 

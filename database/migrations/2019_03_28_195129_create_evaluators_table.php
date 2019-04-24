@@ -27,7 +27,7 @@ class CreateEvaluatorsTable extends Migration
             $table->foreign('evaluator_3')->references('id')->on('users');
             $table->unsignedInteger('evaluator_4')->nullable(); 
             $table->foreign('evaluator_4')->references('id')->on('users');
-            $table->string('observacion')->nullable(); 
+            $table->text('observacion')->nullable(); 
             $table->timestamps();
         });
     }

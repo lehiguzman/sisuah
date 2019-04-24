@@ -24,7 +24,7 @@ class CreateEvaluationsTable extends Migration
             $table->unsignedInteger('prof_id');
             $table->foreign('prof_id')->references('id')->on('users');
             $table->integer('resultado');
-            $table->string('observacion');
+            $table->text('observacion');
             $table->timestamps();
         });
     }

@@ -38,6 +38,31 @@
         @endif
     </div>
 </div>
+<div class="form-group row">
+    <div class="col-md-12 form-inline justify-content-center">
+        <input id="tel_movil" type="text" class="form-control{{ $errors->has('tel_movil') ? ' is-invalid' : '' }} col-sm-6" name="tel_movil" value="{{ old('tel_movil') }}" placeholder="Ingrese Teléfono movil">
+        @if ($errors->has('tel_movil'))
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $errors->first('tel_movil') }}</strong>
+            </span>
+        @endif
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-md-12 form-inline justify-content-center">
+        <input id="tel_local" type="text" class="form-control{{ $errors->has('tel_local') ? ' is-invalid' : '' }} col-sm-6" name="tel_local" value="{{ old('tel_local') }}" placeholder="Ingrese Teléfono local">
+        @if ($errors->has('tel_local'))
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $errors->first('tel_local') }}</strong>
+            </span>
+        @endif
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-md-12 form-inline justify-content-center">
+        <textarea id="direccion" class="form-control{{ $errors->has('direccion') ? ' is-invalid' : '' }} col-sm-6" name="direccion" value="{{ old('direccion') }}" placeholder="Ingrese Dirección de Habitación"></textarea>
+    </div>
+</div>
 @if(Auth::user()->tipo == '1' or Auth::user()->tipo == '4')
 <div class="form-group row">
     <div class="col-md-12 form-inline justify-content-center">

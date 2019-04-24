@@ -1,11 +1,7 @@
 <div class="form-group row">
     <div class="col-md-12 form-inline justify-content-center">
-    <input id="cedula" type="text" class="form-control{{ $errors->has('cedula') ? ' is-invalid' : '' }} col-sm-6" name="cedula" value="{{ $user->cedula }}" placeholder="Ingrese Número de Cédula" required autofocus>
-        @if ($errors->has('cedula'))
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $errors->first('cedula') }}</strong>
-            </span>
-        @endif
+    <input type="text" class="form-control{{ $errors->has('cedula') ? ' is-invalid' : '' }} col-sm-6" value="{{ $user->cedula }}" placeholder="Ingrese Número de Cédula" required autofocus @if(Auth::user()->tipo != 1) disabled @endif>
+    <input type="hidden" name="cedula" value="{{ $user->cedula }}">     
     </div>
 </div>
 <div class="form-group row">                          
@@ -20,12 +16,8 @@
 </div>
 <div class="form-group row">
     <div class="col-md-12 form-inline justify-content-center">
-        <input id="username" type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }} col-sm-6" name="username" value="{{ $user->username }}" placeholder="Ingrese Usuario" required>
-        @if ($errors->has('username'))
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $errors->first('username') }}</strong>
-            </span>
-        @endif
+        <input type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }} col-sm-6" value="{{ $user->username }}" placeholder="Ingrese Usuario" required @if(Auth::user()->tipo != 1) disabled @endif>
+        <input type="hidden" name="username" value="{{ $user->username }}">     
     </div>
 </div>
 <div class="form-group row">
@@ -36,6 +28,31 @@
                 <strong>{{ $errors->first('email') }}</strong>
             </span>
         @endif
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-md-12 form-inline justify-content-center">
+        <input id="tel_movil" type="text" class="form-control{{ $errors->has('tel_movil') ? ' is-invalid' : '' }} col-sm-6" name="tel_movil" value="{{ $user->tel_movil }}" placeholder="Ingrese Teléfono movil">
+        @if ($errors->has('tel_movil'))
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $errors->first('tel_movil') }}</strong>
+            </span>
+        @endif
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-md-12 form-inline justify-content-center">
+        <input id="tel_local" type="text" class="form-control{{ $errors->has('tel_local') ? ' is-invalid' : '' }} col-sm-6" name="tel_local" value="{{ $user->tel_local }}" placeholder="Ingrese Teléfono local">
+        @if ($errors->has('tel_local'))
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $errors->first('tel_local') }}</strong>
+            </span>
+        @endif
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-md-12 form-inline justify-content-center">
+        <textarea id="direccion" class="form-control{{ $errors->has('direccion') ? ' is-invalid' : '' }} col-sm-6" name="direccion" placeholder="Ingrese Dirección de Habitación">{{ $user->direccion }}</textarea>
     </div>
 </div>
 @if(Auth::user()->tipo == '1' or Auth::user()->tipo == '4')
@@ -65,6 +82,7 @@
         <input class="dropify" type="file" name="avatar" id="avatar" data-height="60" data-default-file="{{ asset('storage/avatar/'.$user->avatar) }}">  
     </div>
 </div>
+@if(Auth::user()->tipo == 1) 
 <div class="form-group row">
     <div class="col-md-12 form-inline justify-content-center">
         <select name="tipo" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }} col-sm-6">
@@ -91,6 +109,9 @@
         @endif
     </div>
 </div>
+@else
+    <input type="hidden" name="tipo" value="{{ $user->tipo }}">     
+@endif
 <div class="form-group row">
     <div class="col-md-12 form-inline justify-content-center">
         <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }} col-sm-6" name="password" placeholder="Ingrese Contraseña">

@@ -17,7 +17,7 @@ class CreatePeriodsTable extends Migration
             $table->increments('id');
             $table->string('denominacion');
             $table->string('anio');
-            $table->string('descripcion');
+            $table->text('descripcion');
             $table->timestamps();
         });
     }

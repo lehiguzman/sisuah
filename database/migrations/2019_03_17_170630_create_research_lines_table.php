@@ -16,7 +16,7 @@ class CreateResearchLinesTable extends Migration
         Schema::create('research_lines', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
-            $table->string('observacion');
+            $table->text('observacion');
             $table->timestamps();
         });
     }
