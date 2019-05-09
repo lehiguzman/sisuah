@@ -4,9 +4,16 @@
 
 <head>
 
-	<title>Propuesta</title>
-	
-
+	<title>Propuesta</title>	
+	<style type="text/css">
+		footer {
+                position: fixed; 
+                bottom: 30px; 
+                left: 0px; 
+                right: 0px;
+                height: 50px; 
+            }
+	</style>
 </head>
 
 <body>
@@ -20,7 +27,7 @@
 	<div>		
 		<span style="margin-right: 350px"><b>Fecha:</b> {{ date('d/m/Y') }}</span>
 		<b>Periodo Académico: </b>{{ $period->denominacion }}
-	</div>	<br>
+	</div>	<br><br><br>
 	<div>		
 		<span><b>NOMBRE Y APELLIDO DEL ESTUDIANTE: </b></span>
 			{{ $user->name }}
@@ -28,25 +35,14 @@
 	<div>		
 		<span style="margin-right: 40px"><b>CEDULA DE IDENTIDAD: </b> {{ $user->cedula }}</span><b> CORREO ELECTRÓNICO: </b>{{ $user->email }}
 	</div> <br>
-	<div>		
-		<span style="margin-right: 150px">PROFESOR DE SEMINARIO: {{ $profsem->name }} </span> SECCIÓN: {{ $section->nombre }}
-	</div> <br>
+	@if($profsem)
+		<div>		
+			<span style="margin-right: 150px">PROFESOR DE SEMINARIO: {{ $profsem->name }} </span> SECCIÓN: {{ $section->nombre }}
+		</div> <br>
+	@endif
 	<div>		
 		<span>GRADO DE INSTRUCCIÓN : @if($user->nivest == 1) Bachiller @elseif($user->nivest == 2) TSU @endif</span>
-	</div> <br>	
-	<div>
-		<span style="margin-left: 20px">
-			@if($proposal->sercom == 'si')
-				SERVICIO COMUNITARIO CULMINADO CON {{ $proposal->sercom_horas }} HORAS DE TRABAJO.
-			@elseif($proposal->sercom == 'no')
-				SERVICIO COMUNITARIO NO CULMINADO.
-			@elseif($proposal->sercom == 'ec')
-				SERVICIO COMUNITARIO EN CURSO.
-			@else
-				DATOS DE SERVICIO COMUNITARIO NO DISPONIBLES.
-			@endif
-		</span>
-	</div> <br>
+	</div> <br>		
 	<div>		
 		<span>LINEA DE INVESTIGACIÓN : {{ $investigacion->nombre }}</span>
 	</div> <br> <br>
@@ -78,17 +74,13 @@
 	@endforeach
 	<br><br>
 	<div>		
-		<span><b>ASIGNATURAS A CURSAR CON TRABAJO DE GRADO</b></span>
-	</div> <br>	
-	<div style="margin-left: 20px;" align="justify">		
-		<li>{{ $asignatura->nombre }}</li>
-	</div> <br><br>
-	<div>		
 		<span><b>EVALUACIÓN</b></span>
 	</div> <br>
 	<div style="margin-left: 20px;" align="justify">				
 			<span style="line-height: 25px;">ASESOR ACADÉMICO ASIGNADO : {{ $asesor_academico->name }}</span> <br>
+			@if($section)
 			<span>SECCIÓN ASIGNADA : {{ $section->nombre }}</span>			
+			@endif
 	</div>	<br><br>
 	<div style="margin-left: 20px;" align="justify">
 		<table border="1" style=" border-collapse: collapse; line-height: 30px"  width="100%">
@@ -117,6 +109,26 @@
 			@endforeach
 		</table>
 	</div> <br><br>
+	<footer>
+		<table width="100%">
+			<tr>
+				<td width="50%" align="center">
+					____________________________
+				</td>
+				<td width="50%" align="center">
+					____________________________
+				</td>
+			</tr>
+			<tr>
+				<td width="50%" align="center">
+					<b>Prof. : </b>@if($profsem) {{ $profsem->name }} {{ $profsem->lastname}} @endif
+				</td>
+				<td width="50%" align="center">
+					<b>Estudiante : </b> {{ $user->name }} {{ $user->lastname}}
+				</td>
+			</tr>
+		</table>
+	</footer>
 </body>
 
 </html>

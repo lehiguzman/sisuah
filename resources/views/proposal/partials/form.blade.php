@@ -27,32 +27,6 @@
     
 </div>
 <div class="form-group row">
-    <div class="col-md-12 form-inline justify-content-center">
-        <label for="sercom">¿Culmino servicio comunitario?</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <select id="sercom" name="sercom" class="form-control{{ $errors->has('sercom') ? ' is-invalid' : '' }} col-sm-2" onchange="disabledNroHoras(this)">
-            <option value="0" disabled selected>
-                -- Seleccione --
-            </option>
-            <option value="si">
-                SI
-            </option>
-            <option value="no">
-                NO
-            </option>
-            <option value="ec">
-                EN CURSO
-            </option>            
-        </select>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" class="form-control{{ $errors->has('sercom_horas') ? ' is-invalid' : '' }} col-sm-1" name="sercom_horas" id="sercom_horas" placeholder="Nro de Horas" disabled>
-        @if ($errors->has('sercom'))
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $errors->first('sercom') }}</strong>
-            </span>
-        @endif
-    </div>
-</div>
-<div class="form-group row">
     <div class="col-md-12 form-inline justify-content-center">        
         <select id="research_line_id" name="research_line_id" class="form-control{{ $errors->has('research_line_id') ? ' is-invalid' : '' }} col-sm-5">
             <option value="0" disabled selected>

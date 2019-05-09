@@ -37,6 +37,9 @@ class SectionController extends Controller
     public function store(Request $request)
     {
           $data = $request;
+          if ($data['observacion'] == "") {
+                $data['observacion'] = '';
+            }
                 Section::create([
                     'nombre' => $data['nombre'],                    
                     'observacion' => $data['observacion'],                    
@@ -78,6 +81,10 @@ class SectionController extends Controller
     public function update(Request $request, $id)
     {
         $section = Section::find($id);
+        if ($request->observacion == "") 
+            {
+                $request->observacion = '';
+            }
         if($section)
         {
             $section->nombre = $request->nombre;            

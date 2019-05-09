@@ -37,6 +37,12 @@ class SubjectController extends Controller
     public function store(Request $request)
     {
         $data = $request;
+        if ($data['descripcion'] == "") {
+                $data['descripcion'] = '';
+            }
+        if ($data['observacion'] == "") {
+                $data['observacion'] = '';
+            }
                 Subject::create([
                     'nombre' => $data['nombre'],
                     'descripcion' => $data['descripcion'],
@@ -79,6 +85,14 @@ class SubjectController extends Controller
     public function update(Request $request, $id)
     {
         $subject = Subject::find($id);
+        if ($request->descripcion == "") 
+            {
+                $request->descripcion = '';
+            }
+        if ($request->observacion == "") 
+            {
+                $request->observacion = '';
+            }
         if($subject)
         {
             $subject->nombre = $request->nombre;

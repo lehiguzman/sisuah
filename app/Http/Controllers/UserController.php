@@ -75,8 +75,12 @@ class UserController extends Controller
     public function store(Request $request)
     {        
         $this->validator($request->all())->validate();
-
-        $file = $this->uploadFilePost($request);
+        $file="NULL";
+        
+        if($request->hasFile('avatar')) 
+            {
+                $file = $this->uploadFilePost($request);                
+            }
 
             $data = $request;
                 User::create([

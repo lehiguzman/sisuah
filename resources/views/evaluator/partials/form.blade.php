@@ -20,7 +20,7 @@
 <div class="form-group row">    
     <div class="col-md-12 form-inline justify-content-center">   
         <select id="asesor_academico" name="asesor_academico" class="form-control{{ $errors->has('asesor_academico') ? ' is-invalid' : '' }} col-sm-4">
-            <option value="0">
+            <option value="">
                 -- Seleccione Asesor académico  --
             </option>
             @foreach($users as $user)
@@ -39,7 +39,7 @@
 <div class="form-group row">    
     <div class="col-md-12 form-inline justify-content-center">   
         <select id="evaluator_1" name="evaluator_1" class="form-control{{ $errors->has('evaluator_1') ? ' is-invalid' : '' }} col-sm-4">
-            <option value="0">
+            <option value="">
                 -- Seleccione Profesor evaluador  --
             </option>
             @foreach($users as $user)
@@ -58,7 +58,7 @@
 <div class="form-group row">
     <div class="col-md-12 form-inline justify-content-center">    
         <select id="evaluator_2" name="evaluator_2" class="form-control{{ $errors->has('evaluator_2') ? ' is-invalid' : '' }} col-sm-4">
-            <option value="0">
+            <option value="">
                 -- Seleccione Profesor evaluador --
             </option>
             @foreach($users as $user)
@@ -77,7 +77,7 @@
 <div class="form-group row">
     <div class="col-md-12 form-inline justify-content-center">    
         <select id="evaluator_3" name="evaluator_3" class="form-control{{ $errors->has('evaluator_3') ? ' is-invalid' : '' }} col-sm-4">
-            <option value="0">
+            <option value="">
                 -- Seleccione Profesor evaluador --
             </option>
             @foreach($users as $user)
@@ -96,7 +96,7 @@
 <div class="form-group row">
     <div class="col-md-12 form-inline justify-content-center">    
         <select id="evaluator_4" name="evaluator_4" class="form-control{{ $errors->has('evaluator_4') ? ' is-invalid' : '' }} col-sm-4">
-            <option value="0">
+            <option value="">
                 -- Dirección académica --
             </option>
             @foreach($users as $user)

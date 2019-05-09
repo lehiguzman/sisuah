@@ -49,6 +49,10 @@ class EvaluationController extends Controller
     {
         $data = $request;
 
+        if ($data['observacion'] == "") {
+                $data['observacion'] = '';
+            }
+
         $evaluation = Evaluation::updateOrCreate(
             ['proposal_id' => $data['proposal_id'], 'prof_id' => $data['prof_id']],
             ['period_id' =>  $data['period_id'], 
@@ -88,6 +92,11 @@ class EvaluationController extends Controller
     {
         $data = $request;
         $evaluation = Evaluation::find($id);
+
+        if ($request->observacion == "") 
+            {
+                $request->observacion = '';
+            }
         
         if($evaluation)
         {            

@@ -37,6 +37,10 @@ class PeriodController extends Controller
     public function store(Request $request)
     {       
             $data = $request;
+            if ($data['descripcion'] == "") {
+                $data['descripcion'] = '';
+            }
+            
                 Period::create([
                     'denominacion' => $data['denominacion'],
                     'anio' => $data['anio'],
@@ -79,6 +83,11 @@ class PeriodController extends Controller
     public function update(Request $request, $id)
     {
         $period = Period::find($id);
+
+        if ($request->descripcion == "") 
+            {
+                $request->descripcion = '';
+            }
         if($period)
         {
             $period->denominacion = $request->denominacion;

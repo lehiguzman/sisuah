@@ -37,6 +37,9 @@ class ResearchLineController extends Controller
     public function store(Request $request)
     {
         $data = $request;
+            if ($data['observacion'] == "") {
+                $data['observacion'] = '';
+            }
                 Research_line::create([
                     'nombre' => $data['nombre'],
                     'observacion' => $data['observacion']                    
@@ -78,6 +81,10 @@ class ResearchLineController extends Controller
     public function update(Request $request, $id)
     {
         $research_line = Research_line::find($id);
+         if ($request->observacion == "") 
+            {
+                $request->observacion = '';
+            }
         if($research_line)
         {
             $research_line->nombre = $request->nombre;
