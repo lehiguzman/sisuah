@@ -91,9 +91,9 @@
 			</tr>
 			@foreach($evaluations as $evaluation)
 			<tr>				
-				@foreach($users as $user)
-					@if($evaluation->prof_id == $user->id)
-						<td align="center">{{ $user->name }}</td>
+				@foreach($users as $userEval)
+					@if($evaluation->prof_id == $userEval->id)
+						<td align="center">{{ $userEval->name }}</td>
 					@endif
 				@endforeach
 				<td align="center">
@@ -124,7 +124,7 @@
 					<b>Prof. : </b>@if($profsem) {{ $profsem->name }} {{ $profsem->lastname}} @endif
 				</td>
 				<td width="50%" align="center">
-					<b>Estudiante : </b> {{ $user->name }} {{ $user->lastname}}
+					<b>Estudiante : </b> {{ $user->name }} {{ $user->lastname }}
 				</td>
 			</tr>
 		</table>
